@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slice & Dice - Artisan Pizza Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626',
+                        secondary: '#FED7AA',
+                        accent: '#1F2937'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out; }
+        .animate-bounce-custom { animation: bounce 2s infinite; }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .pizza-shadow {
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-orange-50 to-red-50 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">🍕</span>
+                    </div>
+                    <span class="text-2xl font-bold text-accent">Slice & Dice</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-accent hover:text-primary transition-colors">Home</a>
+                    <a href="#menu" class="text-accent hover:text-primary transition-colors">Menu</a>
+                    <a href="#about" class="text-accent hover:text-primary transition-colors">About</a>
+                    <a href="#contact" class="text-accent hover:text-primary transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="cartBtn" class="relative bg-primary text-white px-4 py-2 rounded-full hover:bg-red-700 transition-colors">
+                        Cart (<span id="cartCount">0</span>)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 min-h-screen flex items-center bg-gradient-to-r from-orange-400 to-red-500">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                        Authentic Italian
+                        <span class="text-secondary">Pizza</span>
+                    </h1>
+                    <p class="text-xl text-white/90 mb-8 leading-relaxed">
+                        Handcrafted with love, delivered with speed. Experience the perfect blend of traditional recipes and modern convenience.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button onclick="scrollToMenu()" class="bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+                            Order Now
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition-all">
+                            View Menu
+                        </button>
+                    </div>
+                </div>
+                <div class="animate-bounce-custom">
+                    <div class="relative">
+                        <div class="w-80 h-80 bg-yellow-300 rounded-full pizza-shadow mx-auto flex items-center justify-center">
+                            <div class="text-8xl">🍕</div>
+                        </div>
+                        <div class="absolute -top-4 -right-4 w-20 h-20 bg-red-500 rounded-full flex items-center justify-center text-white font-bold">
+                            30min
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-accent mb-4">Our Signature Pizzas</h2>
+                <p class="text-gray-600 text-lg">Crafted with premium ingredients and traditional techniques</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8" id="pizzaGrid">
+                <!-- Pizza cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-r from-orange-100 to-red-100">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in">
+                    <h2 class="text-4xl font-bold text-accent mb-6">Our Story</h2>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        Founded in 2020, Slice & Dice brings authentic Italian flavors to your doorstep. Our master pizzaiolos use traditional wood-fired ovens and the finest ingredients imported directly from Italy.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary">500+</div>
+                            <div class="text-gray-600">Happy Customers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-primary">30min</div>
+                            <div class="text-gray-600">Average Delivery</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-2xl mb-2">🔥</div>
+                        <h3 class="font-semibold mb-2">Wood-Fired Ovens</h3>
+                        <p class="text-gray-600 text-sm">Traditional 900°F ovens for authentic taste</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-2xl mb-2">🚚</div>
+                        <h3 class="font-semibold mb-2">Fast Delivery</h3>
+                        <p class="text-gray-600 text-sm">Hot & fresh to your door in 30 minutes</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-2xl mb-2">🌿</div>
+                        <h3 class="font-semibold mb-2">Fresh Ingredients</h3>
+                        <p class="text-gray-600 text-sm">Daily sourced premium quality ingredients</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="text-2xl mb-2">👨‍🍳</div>
+                        <h3 class="font-semibold mb-2">Expert Chefs</h3>
+                        <p class="text-gray-600 text-sm">Trained in authentic Italian techniques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-accent text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-gray-300">Ready to order? We're here to help!</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-3xl mb-4">📍</div>
+                    <h3 class="text-xl font-semibold mb-2">Location</h3>
+                    <p class="text-gray-300">123 Pizza Street<br>Downtown, NY 10001</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">📞</div>
+                    <h3 class="text-xl font-semibold mb-2">Phone</h3>
+                    <p class="text-gray-300">(555) 123-PIZZA<br>Open 11AM - 11PM</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-4">✉️</div>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="text-gray-300">hello@sliceanddice.com<br>orders@sliceanddice.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pizza Customization Modal -->
+    <div id="pizzaModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-accent" id="modalTitle">Customize Your Pizza</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <img id="modalImage" src="" alt="Pizza" class="w-full h-64 object-cover rounded-lg mb-4">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-primary mb-2" id="modalPrice">$18.99</div>
+                        <p class="text-gray-600" id="modalDescription"></p>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Size</label>
+                        <select id="pizzaSize" class="w-full p-2 border rounded-lg">
+                            <option value="small">Small (12") - $0</option>
+                            <option value="medium" selected>Medium (14") - +$3</option>
+                            <option value="large">Large (16") - +$6</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Crust</label>
+                        <select id="pizzaCrust" class="w-full p-2 border rounded-lg">
+                            <option value="thin" selected>Thin Crust</option>
+                            <option value="thick">Thick Crust - +$2</option>
+                            <option value="stuffed">Stuffed Crust - +$4</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Extra Toppings</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" value="cheese" class="topping-checkbox mr-2">
+                                <span class="text-sm">Extra Cheese +$2</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="pepperoni" class="topping-checkbox mr-2">
+                                <span class="text-sm">Pepperoni +$2</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="mushrooms" class="topping-checkbox mr-2">
+                                <span class="text-sm">Mushrooms +$1</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" value="olives" class="topping-checkbox mr-2">
+                                <span class="text-sm">Olives +$1</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
+                        <div class="flex items-center space-x-4">
+                            <button onclick="changeQuantity(-1)" class="bg-gray-200 w-8 h-8 rounded-full">-</button>
+                            <span id="quantity" class="font-semibold">1</span>
+                            <button onclick="changeQuantity(1)" class="bg-gray-200 w-8 h-8 rounded-full">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button onclick="addToCart()" class="flex-1 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                            Add to Cart - $<span id="totalPrice">21.99</span>
+                        </button>
+                        <button onclick="closeModal()" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-accent">Your Order</h3>
+                <button onclick="closeCartModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            
+            <div id="cartItems" class="mb-6">
+                <!-- Cart items will be populated by JavaScript -->
+            </div>
+            
+            <div class="border-t pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-semibold">Total: $<span id="cartTotal">0.00</span></span>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Delivery Address</label>
+                    <input type="text" id="deliveryAddress" placeholder="Enter your address" class="w-full p-2 border rounded-lg">
+                </div>
+                
+                <div class="flex space-x-4">
+                    <button onclick="checkout()" class="flex-1 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                        Checkout
+                    </button>
+                    <button onclick="closeCartModal()" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        Continue Shopping
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Pizza data
+        const pizzas = [
+            {
+                id: 1,
+                name: "Margherita Classic",
+                price: 16.99,
+                image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=400&h=300&fit=crop",
+                description: "Fresh mozzarella, tomatoes, basil, and olive oil on our signature thin crust."
+            },
+            {
+                id: 2,
+                name: "Pepperoni Supreme",
+                price: 18.99,
+                image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&h=300&fit=crop",
+                description: "Premium pepperoni, mozzarella cheese, and our homemade tomato sauce."
+            },
+            {
+                id: 3,
+                name: "Quattro Stagioni",
+                price: 21.99,
+                image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
+                description: "Artichokes, mushrooms, ham, and olives representing the four seasons."
+            },
+            {
+                id: 4,
+                name: "Meat Lovers",
+                price: 23.99,
+                image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop",
+                description: "Pepperoni, sausage, bacon, and ham for the ultimate meat experience."
+            },
+            {
+                id: 5,
+                name: "Vegetarian Delight",
+                price: 19.99,
+                image: "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=400&h=300&fit=crop",
+                description: "Bell peppers, mushrooms, onions, tomatoes, and fresh herbs."
+            },
+            {
+                id: 6,
+                name: "BBQ Chicken",
+                price: 20.99,
+                image: "https://images.unsplash.com/photo-1598023696416-0193a0bcd302?w=400&h=300&fit=crop",
+                description: "Grilled chicken, red onions, cilantro, and our signature BBQ sauce."
+            }
+        ];
+
+        // Cart functionality
+        let cart = [];
+        let currentPizza = null;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPizzas();
+            updateCartCount();
+        });
+
+        function renderPizzas() {
+            const grid = document.getElementById('pizzaGrid');
+            grid.innerHTML = pizzas.map(pizza => `
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow animate-fade-in">
+                    <img src="${pizza.image}" alt="${pizza.name}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-accent mb-2">${pizza.name}</h3>
+                        <p class="text-gray-600 mb-4">${pizza.description}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-primary">$${pizza.price}</span>
+                            <button onclick="openPizzaModal(${pizza.id})" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-red-700 transition-colors">
+                                Customize
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openPizzaModal(pizzaId) {
+            currentPizza = pizzas.find(p => p.id === pizzaId);
+            document.getElementById('modalTitle').textContent = currentPizza.name;
+            document.getElementById('modalImage').src = currentPizza.image;
+            document.getElementById('modalPrice').textContent = `$${currentPizza.price}`;
+            document.getElementById('modalDescription').textContent = currentPizza.description;
+            document.getElementById('pizzaModal').classList.remove('hidden');
+            document.getElementById('pizzaModal').classList.add('flex');
+            updateTotalPrice();
+        }
+
+        function closeModal() {
+            document.getElementById('pizzaModal').classList.add('hidden');
+            document.getElementById('pizzaModal').classList.remove('flex');
+            resetModal();
+        }
+
+        function resetModal() {
+            document.getElementById('pizzaSize').value = 'medium';
+            document.getElementById('pizzaCrust').value = 'thin';
+            document.getElementById('quantity').textContent = '1';
+            document.querySelectorAll('.topping-checkbox').forEach(cb => cb.checked = false);
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            if (!currentPizza) return;
+            
+            let total = currentPizza.price;
+            
+            // Size pricing
+            const size = document.getElementById('pizzaSize').value;
+            if (size === 'medium') total += 3;
+            if (size === 'large') total += 6;
+            
+            // Crust pricing
+            const crust = document.getElementById('pizzaCrust').value;
+            if (crust === 'thick') total += 2;
+            if (crust === 'stuffed') total += 4;
+            
+            // Toppings pricing
+            document.querySelectorAll('.topping-checkbox:checked').forEach(cb => {
+                if (cb.value === 'cheese' || cb.value === 'pepperoni') total += 2;
+                else total += 1;
+            });
+            
+            const quantity = parseInt(document.getElementById('quantity').textContent);
+            total *= quantity;
+            
+            document.getElementById('totalPrice').textContent = total.toFixed(2);
+        }
+
+        function changeQuantity(change) {
+            const quantityEl = document.getElementById('quantity');
+            let quantity = parseInt(quantityEl.textContent) + change;
+            if (quantity < 1) quantity = 1;
+            quantityEl.textContent = quantity;
+            updateTotalPrice();
+        }
+
+        function addToCart() {
+            if (!currentPizza) return;
+            
+            const size = document.getElementById('pizzaSize').value;
+            const crust = document.getElementById('pizzaCrust').value;
+            const toppings = Array.from(document.querySelectorAll('.topping-checkbox:checked')).map(cb => cb.value);
+            const quantity = parseInt(document.getElementById('quantity').textContent);
+            const totalPrice = parseFloat(document.getElementById('totalPrice').textContent);
+            
+            const cartItem = {
+                id: Date.now(),
+                pizza: currentPizza,
+                size,
+                crust,
+                toppings,
+                quantity,
+                totalPrice
+            };
+            
+            cart.push(cartItem);
+            updateCartCount();
+            closeModal();
+            
+            // Show success message
+            alert('Pizza added to cart!');
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function openCartModal() {
+            renderCartItems();
+            document.getElementById('cartModal').classList.remove('hidden');
+            document.getElementById('cartModal').classList.add('flex');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.add('hidden');
+            document.getElementById('cartModal').classList.remove('flex');
+        }
+
+        function renderCartItems() {
+            const cartItemsEl = document.getElementById('cartItems');
+            
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty</p>';
+                document.getElementById('cartTotal').textContent = '0.00';
+                return;
+            }
+            
+            cartItemsEl.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between p-4 border-b">
+                    <div class="flex items-center space-x-4">
+                        <img src="${item.pizza.image}" alt="${item.pizza.name}" class="w-16 h-16 object-cover rounded">
+                        <div>
+                            <h4 class="font-semibold">${item.pizza.name}</h4>
+                            <p class="text-sm text-gray-600">${item.size} • ${item.crust} crust</p>
+                            ${item.toppings.length > 0 ? `<p class="text-sm text-gray-600">+ ${item.toppings.join(', ')}</p>` : ''}
+                            <p class="text-sm">Qty: ${item.quantity}</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-semibold">$${item.totalPrice.toFixed(2)}</p>
+                        <button onclick="removeFromCart(${item.id})" class="text-red-500 text-sm hover:text-red-700">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+            document.getElementById('cartTotal').textContent = total.toFixed(2);
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCartCount();
+            renderCartItems();
+        }
+
+        function checkout() {
+            const address = document.getElementById('deliveryAddress').value;
+            
+            if (!address.trim()) {
+                alert('Please enter a delivery address');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+            
+            alert('Order placed successfully! Your delicious pizza will be delivered to ' + address + ' in 30 minutes. Thank you for choosing Slice & Dice!');
+            cart = [];
+            updateCartCount();
+            closeCartModal();
+        }
+
+        function scrollToMenu() {
+            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Event listeners
+        document.getElementById('cartBtn').addEventListener('click', openCartModal);
+        document.getElementById('pizzaSize').addEventListener('change', updateTotalPrice);
+        document.getElementById('pizzaCrust').addEventListener('change', updateTotalPrice);
+        document.querySelectorAll('.topping-checkbox').forEach(cb => {
+            cb.addEventListener('change', updateTotalPrice);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
