@@ -1,925 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slice & Dice - Artisan Pizza Delivery</title>
+    <title>DMD Exon 44 Competitive Intelligence | Avidity Biosciences</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#C0392B',
-                        secondary: '#F39C12',
-                        accent: '#2C3E50',
-                        gold: '#FFD700',
-                        warm: '#FFF8DC',
-                        terracotta: '#E67E22',
-                        sage: '#27AE60'
-                    },
-                    fontFamily: {
-                        'serif': ['Playfair Display', 'serif'],
-                        'sans': ['Inter', 'sans-serif']
-                    },
-                    backgroundImage: {
-                        'wood-texture': "url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23D2B48C\" fill-opacity=\"0.1\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
-                        'pizza-pattern': "url('data:image/svg+xml,%3Csvg width=\"40\" height=\"40\" viewBox=\"0 0 40 40\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"%23F39C12\" fill-opacity=\"0.05\"%3E%3Ccircle cx=\"20\" cy=\"20\" r=\"3\"/%3E%3Ccircle cx=\"10\" cy=\"10\" r=\"2\"/%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"2\"/%3E%3Ccircle cx=\"10\" cy=\"30\" r=\"1.5\"/%3E%3Ccircle cx=\"30\" cy=\"10\" r=\"1.5\"/%3E%3C/g%3E%3C/svg%3E')"
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .font-serif {
-            font-family: 'Playfair Display', serif;
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+        @media print {
+            .no-print { display: none !important; }
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(240, 171, 0, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(240, 171, 0, 0.8); }
-        }
-        
-        .animate-fade-up { animation: fadeInUp 0.8s ease-out; }
-        .animate-slide-left { animation: slideInLeft 0.8s ease-out; }
-        .animate-slide-right { animation: slideInRight 0.8s ease-out; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-rotate-slow { animation: rotate 20s linear infinite; }
-        .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-        
-        .text-shadow {
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-        }
-        
-        .pizza-card {
-            background: linear-gradient(135deg, #fff 0%, #fefefe 100%);
-            border: 1px solid #e8e8e8;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        
-        .pizza-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(192, 57, 43, 0.2);
-            border-color: #F39C12;
-        }
-        
-        .hero-bg {
-            background: linear-gradient(135deg, #C0392B 0%, #E67E22 25%, #F39C12 50%, #E67E22 75%, #C0392B 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .decorative-border {
-            border: 3px solid transparent;
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(45deg, #F39C12, #C0392B, #F39C12) border-box;
-        }
-        
-        .chef-signature {
-            position: relative;
-            font-family: 'Brush Script MT', cursive;
-            color: #C0392B;
-            transform: rotate(-5deg);
-        }
-        
-        .ingredient-badge {
-            background: linear-gradient(45deg, #27AE60, #2ECC71);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+        .patent-badge {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
-        
-        .price-tag {
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #2C3E50;
-            font-weight: 800;
-            font-size: 1.5rem;
-            padding: 8px 16px;
-            border-radius: 12px;
-            transform: rotate(3deg);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-        }
-        
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent 0%, #F39C12 20%, #C0392B 50%, #F39C12 80%, transparent 100%);
-            margin: 60px 0;
-        }
-        
-        .floating-ingredient {
-            position: absolute;
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        .floating-ingredient:nth-child(2) { animation-delay: -1s; }
-        .floating-ingredient:nth-child(3) { animation-delay: -2s; }
-        .floating-ingredient:nth-child(4) { animation-delay: -3s; }
-        
-        .pizza-slice-bg {
-            background: conic-gradient(from 0deg, #FFD700 0deg, #F39C12 60deg, #E67E22 120deg, #C0392B 180deg, #E67E22 240deg, #F39C12 300deg, #FFD700 360deg);
-            border-radius: 50%;
-        }
-        
-        .wood-texture {
-            background-image: 
-                radial-gradient(circle at 1px 1px, rgba(139, 69, 19, 0.3) 1px, transparent 0),
-                linear-gradient(90deg, rgba(160, 82, 45, 0.1) 50%, transparent 50%);
-            background-size: 20px 20px, 40px 40px;
-        }
-        
-        .steam-effect::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            width: 4px;
-            height: 20px;
-            background: linear-gradient(transparent, rgba(255, 255, 255, 0.6), transparent);
-            border-radius: 50%;
-            animation: steam 2s ease-in-out infinite;
-            transform: translateX(-50%);
-        }
-        
-        @keyframes steam {
-            0% { opacity: 0; transform: translateX(-50%) translateY(0) scaleY(1); }
-            50% { opacity: 1; transform: translateX(-50%) translateY(-10px) scaleY(1.2); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(-20px) scaleY(0.8); }
-        }
+        .patent-high { background-color: #fee2e2; color: #991b1b; }
+        .patent-medium { background-color: #fed7aa; color: #9a3412; }
+        .patent-low { background-color: #d1fae5; color: #065f46; }
     </style>
 </head>
-<body class="bg-warm">
+<body class="bg-gray-50 text-gray-900">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-gold/20">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="relative">
-                        <div class="w-12 h-12 pizza-slice-bg flex items-center justify-center animate-rotate-slow">
-                            <span class="text-white font-bold text-xl animate-float">🍕</span>
-                        </div>
-                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-sage rounded-full animate-pulse-glow"></div>
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-gray-200 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <h1 class="text-xl font-semibold gradient-text">DMD Exon 44 Competitive Intelligence</h1>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#dashboard" class="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors">Dashboard</a>
+                        <a href="#competitors" class="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors">Competitors</a>
+                        <a href="#patents" class="text-sm font-medium text-gray-700 hover:text-indigo-600 transition-colors">Patent Landscape</a>
                     </div>
-                    <div>
-                        <span class="text-3xl font-serif font-bold text-accent">Slice & Dice</span>
-                        <div class="text-xs text-gray-600 font-medium">Artisan Pizza Craft</div>
-                    </div>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-accent hover:text-primary transition-all duration-300 font-medium relative group">
-                        Home
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#menu" class="text-accent hover:text-primary transition-all duration-300 font-medium relative group">
-                        Menu
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#about" class="text-accent hover:text-primary transition-all duration-300 font-medium relative group">
-                        About
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#contact" class="text-accent hover:text-primary transition-all duration-300 font-medium relative group">
-                        Contact
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button id="cartBtn" class="relative bg-gradient-to-r from-primary to-terracotta text-white px-6 py-3 rounded-full font-semibold hover:from-terracotta hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        🛒 Cart (<span id="cartCount">0</span>)
-                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-gold text-accent rounded-full flex items-center justify-center text-xs font-bold animate-pulse"></div>
+                    <span class="text-xs text-gray-500">Last updated: July 28, 2025</span>
+                    <button onclick="exportToPDF()" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors">
+                        Export PDF
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-20 min-h-screen flex items-center hero-bg overflow-hidden">
-        <!-- Floating Ingredients -->
-        <div class="floating-ingredient top-20 left-10 text-4xl opacity-20">🍅</div>
-        <div class="floating-ingredient top-40 right-20 text-3xl opacity-30">🧀</div>
-        <div class="floating-ingredient bottom-32 left-20 text-3xl opacity-25">🌿</div>
-        <div class="floating-ingredient bottom-20 right-10 text-4xl opacity-20">🫒</div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="animate-slide-left">
-                    <div class="mb-6">
-                        <span class="ingredient-badge">Est. 2020</span>
-                        <span class="ingredient-badge ml-2">Wood-Fired</span>
-                    </div>
-                    <h1 class="text-6xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight text-shadow">
-                        Authentic
-                        <span class="text-gold block">Italian</span>
-                        <span class="relative">
-                            Pizza
-                            <div class="absolute -bottom-2 left-0 w-full h-1 bg-gold/50 transform -skew-x-12"></div>
-                        </span>
-                    </h1>
-                    <p class="text-xl text-white/95 mb-8 leading-relaxed font-light">
-                        Handcrafted with passion in our traditional wood-fired ovens. Every slice tells a story of authentic Italian heritage meets modern culinary artistry.
+    <!-- Main Content -->
+    <main class="pt-20 pb-12">
+        <!-- Executive Summary -->
+        <section id="dashboard" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 fade-in">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+                <h2 class="text-2xl font-bold mb-6">Executive Summary: DMD Exon 44 Market</h2>
+                <div class="prose max-w-none text-gray-600">
+                    <p class="text-lg leading-relaxed">
+                        Analysis of the DMD exon 44 skipping market reveals <strong>4 primary threats</strong> to Avidity's AOC-1044. 
+                        The market represents <strong>6-8% of all DMD patients</strong> (~900 US patients) with no currently approved therapies.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToMenu()" class="bg-white text-primary px-8 py-4 rounded-full font-bold hover:bg-gold hover:text-accent transition-all duration-300 transform hover:scale-105 shadow-xl">
-                            🍕 Order Now
-                        </button>
-                        <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition-all duration-300 backdrop-blur-sm">
-                            👨‍🍳 View Menu
-                        </button>
-                    </div>
-                    <div class="mt-8 chef-signature">
-                        <span class="text-2xl text-gold">~ Chef Marco</span>
-                    </div>
                 </div>
-                <div class="animate-slide-right relative">
-                    <div class="relative group">
-                        <div class="absolute inset-0 bg-gradient-to-r from-gold to-secondary rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
-                        <div class="relative w-96 h-96 mx-auto">
-                            <div class="w-full h-full pizza-slice-bg rounded-full flex items-center justify-center animate-float relative steam-effect">
-                                <div class="text-9xl animate-rotate-slow">🍕</div>
-                            </div>
-                            <div class="absolute -top-6 -right-6 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-bold text-lg animate-pulse-glow">
-                                ⚡ 30min
-                            </div>
-                            <div class="absolute -bottom-4 -left-4 bg-gradient-to-r from-sage to-green-500 text-white px-4 py-2 rounded-full font-bold animate-bounce">
-                                🔥 Fresh Hot
-                            </div>
+                
+                <!-- Key Metrics -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+                    <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-6 hover-lift">
+                        <div class="text-red-600 text-sm font-semibold mb-1">#1 Primary Threat</div>
+                        <div class="text-2xl font-bold text-gray-900">NS Pharma</div>
+                        <div class="text-sm text-gray-600 mt-1">Phase 2, Breakthrough Designation</div>
+                        <div class="mt-3">
+                            <span class="patent-badge patent-high">2 High Proximity Patents</span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 hover-lift">
+                        <div class="text-orange-600 text-sm font-semibold mb-1">#2 Secondary Threat</div>
+                        <div class="text-2xl font-bold text-gray-900">Entrada</div>
+                        <div class="text-sm text-gray-600 mt-1">Phase 1b Starting H1 2026</div>
+                        <div class="mt-3">
+                            <span class="patent-badge patent-low">No exon 44 patents</span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 hover-lift">
+                        <div class="text-yellow-700 text-sm font-semibold mb-1">#3 IP Risk</div>
+                        <div class="text-2xl font-bold text-gray-900">Sarepta</div>
+                        <div class="text-sm text-gray-600 mt-1">Patent Holder (No Clinical)</div>
+                        <div class="mt-3">
+                            <span class="patent-badge patent-high">2 High Proximity Patents</span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover-lift">
+                        <div class="text-green-600 text-sm font-semibold mb-1">#4 Future Risk</div>
+                        <div class="text-2xl font-bold text-gray-900">Dyne</div>
+                        <div class="text-sm text-gray-600 mt-1">Preclinical</div>
+                        <div class="mt-3">
+                            <span class="patent-badge patent-high">4 High Proximity Patents</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="section-divider"></div>
-
-    <!-- Menu Section -->
-    <section id="menu" class="py-20 bg-gradient-to-br from-warm via-white to-warm">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <div class="mb-6">
-                    <span class="ingredient-badge">Signature Collection</span>
+        <!-- Competitor Overview Table -->
+        <section id="competitors" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 fade-in">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+                <h2 class="text-2xl font-bold mb-6">Competitor Overview</h2>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-left py-4 px-4 font-semibold text-gray-700">Company</th>
+                                <th class="text-left py-4 px-4 font-semibold text-gray-700">Program</th>
+                                <th class="text-left py-4 px-4 font-semibold text-gray-700">Stage</th>
+                                <th class="text-left py-4 px-4 font-semibold text-gray-700">Threat Level</th>
+                                <th class="text-left py-4 px-4 font-semibold text-gray-700">Patent Risk</th>
+                                <th class="text-left py-4 px-4 font-semibold text-gray-700">Key Data</th>
+                                <th class="text-center py-4 px-4 font-semibold text-gray-700">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <td class="py-4 px-4 font-medium">NS Pharma</td>
+                                <td class="py-4 px-4">NS-089 (Brogidirsen)</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Phase 2</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">🔥 Very High</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div>
+                                        <span class="patent-badge patent-high">2 High</span>
+                                        <span class="patent-badge patent-medium ml-1">4 Medium</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4 text-sm text-gray-600">
+                                    Dystrophin: 10.27-15.79%<br>
+                                    Dosing: Weekly
+                                </td>
+                                <td class="py-4 px-4 text-center">
+                                    <button onclick="window.open('ns-pharma.html', '_blank')" class="text-indigo-600 hover:text-indigo-800 font-medium">View →</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <td class="py-4 px-4 font-medium">Entrada Therapeutics</td>
+                                <td class="py-4 px-4">ENTR-601-44</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Phase 1b</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">🔥 High</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="patent-badge patent-low">No direct patents</span>
+                                </td>
+                                <td class="py-4 px-4 text-sm text-gray-600">
+                                    Cash: $420M<br>
+                                    FDA hold lifted Feb 2025
+                                </td>
+                                <td class="py-4 px-4 text-center">
+                                    <button onclick="window.open('entrada.html', '_blank')" class="text-indigo-600 hover:text-indigo-800 font-medium">View →</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <td class="py-4 px-4 font-medium">Sarepta Therapeutics</td>
+                                <td class="py-4 px-4">Patent Portfolio Only</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">No Clinical</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">⚠️ Moderate</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div>
+                                        <span class="patent-badge patent-high">2 High</span>
+                                        <span class="patent-badge patent-medium ml-1">2 Medium</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4 text-sm text-gray-600">
+                                    2024 Revenue: $638.2M<br>
+                                    36% workforce reduction
+                                </td>
+                                <td class="py-4 px-4 text-center">
+                                    <button onclick="window.open('sarepta.html', '_blank')" class="text-indigo-600 hover:text-indigo-800 font-medium">View →</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <td class="py-4 px-4 font-medium">Dyne Therapeutics</td>
+                                <td class="py-4 px-4">Exon 44 Program</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Preclinical</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">🟡 Low</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div>
+                                        <span class="patent-badge patent-high">4 High</span>
+                                        <span class="patent-badge patent-medium ml-1">9 Medium</span>
+                                    </div>
+                                </td>
+                                <td class="py-4 px-4 text-sm text-gray-600">
+                                    Cash: $678-779M<br>
+                                    DYNE-251: 8.72% dystrophin
+                                </td>
+                                <td class="py-4 px-4 text-center">
+                                    <button onclick="window.open('dyne.html', '_blank')" class="text-indigo-600 hover:text-indigo-800 font-medium">View →</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <h2 class="text-5xl lg:text-6xl font-serif font-bold text-accent mb-6 relative">
-                    Our Masterpiece Pizzas
-                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-gold to-transparent"></div>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                    Each pizza is a work of art, crafted with premium ingredients and decades of tradition
+            </div>
+        </section>
+
+        <!-- Patent Landscape Summary -->
+        <section id="patents" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 fade-in">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+                <h2 class="text-2xl font-bold mb-6">Patent Landscape Summary</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-red-50 rounded-lg p-6">
+                        <h3 class="text-3xl font-bold text-red-600">17</h3>
+                        <p class="text-gray-700 mt-1">High Proximity Patents (80-100 score)</p>
+                        <p class="text-sm text-gray-600 mt-2">Direct overlap with exon 44 skipping claims</p>
+                    </div>
+                    <div class="bg-orange-50 rounded-lg p-6">
+                        <h3 class="text-3xl font-bold text-orange-600">25+</h3>
+                        <p class="text-gray-700 mt-1">Medium Proximity Patents (30-80 score)</p>
+                        <p class="text-sm text-gray-600 mt-2">Related DMD technologies</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <h3 class="text-3xl font-bold text-green-600">60+</h3>
+                        <p class="text-gray-700 mt-1">Low Proximity Patents (0-30 score)</p>
+                        <p class="text-sm text-gray-600 mt-2">Minimal overlap risk</p>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                    <h3 class="font-semibold text-yellow-900 mb-3">Key Patent Holders by Proximity</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <h4 class="font-medium">Avidity (6 patents)</h4>
+                            <p class="text-xs text-gray-600">Own AOC platform patents</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Dyne (4 patents)</h4>
+                            <p class="text-xs text-gray-600">TfR antibody conjugates</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Sarepta (2 patents)</h4>
+                            <p class="text-xs text-gray-600">PMO exon 44 sequences</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Nippon Shinyaku (2 patents)</h4>
+                            <p class="text-xs text-gray-600">PMO compositions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Sources -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div class="bg-gray-100 rounded-lg p-4">
+                <p class="text-xs text-gray-600">
+                    <strong>Data Sources:</strong> Company SEC filings, clinical trial registrations (ClinicalTrials.gov), 
+                    patent databases, press releases, and investor presentations as of July 28, 2025.
                 </p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="pizzaGrid">
-                <!-- Pizza cards will be populated by JavaScript -->
-            </div>
-
-            <div class="text-center mt-16">
-                <div class="inline-block decorative-border rounded-lg p-8 bg-gradient-to-r from-warm to-white">
-                    <h3 class="text-2xl font-serif font-bold text-accent mb-4">🏆 Award Winning</h3>
-                    <p class="text-gray-600">Voted "Best Pizza in Town" 3 years running</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gradient-to-r from-accent via-gray-800 to-accent text-white relative overflow-hidden wood-texture">
-        <div class="absolute inset-0 bg-pizza-pattern opacity-10"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="animate-fade-up">
-                    <div class="mb-6">
-                        <span class="bg-gradient-to-r from-gold to-secondary text-accent px-4 py-2 rounded-full font-bold text-sm">Our Heritage</span>
-                    </div>
-                    <h2 class="text-5xl font-serif font-bold mb-8 text-gold">The Art of Pizza Making</h2>
-                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-                        Born from a passion for authentic Italian cuisine, Slice & Dice represents three generations of pizza mastery. Our founder, Marco Benedetti, brought traditional Neapolitan techniques from his family's pizzeria in Naples to create something truly extraordinary.
-                    </p>
-                    <div class="grid grid-cols-2 gap-8 mb-8">
-                        <div class="text-center p-6 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl backdrop-blur-sm">
-                            <div class="text-4xl font-bold text-gold mb-2">1000+</div>
-                            <div class="text-gray-300">Happy Customers Monthly</div>
-                        </div>
-                        <div class="text-center p-6 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl backdrop-blur-sm">
-                            <div class="text-4xl font-bold text-gold mb-2">25min</div>
-                            <div class="text-gray-300">Average Delivery Time</div>
-                        </div>
-                    </div>
-                    <blockquote class="border-l-4 border-gold pl-6 italic text-xl text-gray-300">
-                        "Every pizza is a canvas, every topping a brushstroke of flavor."
-                        <footer class="text-gold mt-2">— Chef Marco Benedetti</footer>
-                    </blockquote>
-                </div>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="space-y-6">
-                        <div class="bg-gradient-to-br from-white/10 to-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:border-gold/50 transition-all duration-300 group">
-                            <div class="text-4xl mb-4 group-hover:animate-bounce">🔥</div>
-                            <h3 class="font-serif text-xl font-bold mb-3 text-gold">Wood-Fired Perfection</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed">Traditional 900°F Neapolitan ovens create the perfect char and authentic smoky flavor</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-white/10 to-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:border-gold/50 transition-all duration-300 group">
-                            <div class="text-4xl mb-4 group-hover:animate-bounce">🌿</div>
-                            <h3 class="font-serif text-xl font-bold mb-3 text-gold">Farm Fresh Daily</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed">Ingredients sourced from local farms and imported Italian specialties</p>
-                        </div>
-                    </div>
-                    <div class="space-y-6 mt-12">
-                        <div class="bg-gradient-to-br from-white/10 to-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:border-gold/50 transition-all duration-300 group">
-                            <div class="text-4xl mb-4 group-hover:animate-bounce">🚚</div>
-                            <h3 class="font-serif text-xl font-bold mb-3 text-gold">Lightning Fast</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed">Hot & fresh delivery guaranteed within 30 minutes or it's free</p>
-                        </div>
-                        <div class="bg-gradient-to-br from-white/10 to-white/5 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:border-gold/50 transition-all duration-300 group">
-                            <div class="text-4xl mb-4 group-hover:animate-bounce">👨‍🍳</div>
-                            <h3 class="font-serif text-xl font-bold mb-3 text-gold">Master Chefs</h3>
-                            <p class="text-gray-300 text-sm leading-relaxed">Trained in Naples, certified in passion, perfected through generations</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gradient-to-br from-warm via-secondary/10 to-warm">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl font-serif font-bold text-accent mb-6">Visit Our Pizzeria</h2>
-                <p class="text-xl text-gray-600">Experience the authentic atmosphere where magic happens</p>
-            </div>
-            
-            <div class="grid lg:grid-cols-3 gap-12">
-                <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-3xl group-hover:animate-bounce">
-                        📍
-                    </div>
-                    <h3 class="text-2xl font-serif font-bold mb-4 text-accent">Our Location</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        123 Little Italy Street<br>
-                        Downtown Heritage District<br>
-                        New York, NY 10001
-                    </p>
-                    <div class="mt-4">
-                        <span class="ingredient-badge">Free Parking Available</span>
-                    </div>
-                </div>
-                <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-sage to-green-500 rounded-full flex items-center justify-center text-white text-3xl group-hover:animate-bounce">
-                        📞
-                    </div>
-                    <h3 class="text-2xl font-serif font-bold mb-4 text-accent">Call & Order</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        <span class="text-2xl font-bold text-primary">(555) 123-PIZZA</span><br>
-                        Open Daily: 11AM - 11PM<br>
-                        Weekend: 11AM - Midnight
-                    </p>
-                    <div class="mt-4">
-                        <span class="ingredient-badge">24/7 Online Ordering</span>
-                    </div>
-                </div>
-                <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-gold to-secondary rounded-full flex items-center justify-center text-white text-3xl group-hover:animate-bounce">
-                        ✉️
-                    </div>
-                    <h3 class="text-2xl font-serif font-bold mb-4 text-accent">Connect With Us</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        hello@sliceanddice.com<br>
-                        catering@sliceanddice.com<br>
-                        Follow @SliceAndDiceNY
-                    </p>
-                    <div class="mt-4">
-                        <span class="ingredient-badge">Special Event Catering</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pizza Customization Modal -->
-    <div id="pizzaModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[95vh] overflow-y-auto decorative-border">
-            <div class="p-8">
-                <div class="flex justify-between items-center mb-8">
-                    <div>
-                        <h3 class="text-3xl font-serif font-bold text-accent mb-2" id="modalTitle">Customize Your Pizza</h3>
-                        <p class="text-gray-600">Make it uniquely yours</p>
-                    </div>
-                    <button onclick="closeModal()" class="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 text-2xl transition-all duration-300">&times;</button>
-                </div>
-                
-                <div class="grid lg:grid-cols-2 gap-8">
-                    <div>
-                        <div class="relative group mb-6">
-                            <img id="modalImage" src="" alt="Pizza" class="w-full h-80 object-cover rounded-2xl">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <div class="price-tag" id="modalPrice">$18.99</div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-gray-600 leading-relaxed" id="modalDescription"></p>
-                            <div class="mt-4 flex justify-center space-x-2">
-                                <span class="ingredient-badge">Fresh</span>
-                                <span class="ingredient-badge">Artisan</span>
-                                <span class="ingredient-badge">Made to Order</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block text-lg font-semibold text-accent mb-3">🍕 Size</label>
-                            <select id="pizzaSize" class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors text-lg">
-                                <option value="small">Small (12") - Perfect for one</option>
-                                <option value="medium" selected>Medium (14") - Great for sharing (+$3)</option>
-                                <option value="large">Large (16") - Feed the family (+$6)</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-lg font-semibold text-accent mb-3">🥖 Crust Style</label>
-                            <select id="pizzaCrust" class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors text-lg">
-                                <option value="thin" selected>Thin Crust - Traditional & Crispy</option>
-                                <option value="thick">Thick Crust - Fluffy & Hearty (+$2)</option>
-                                <option value="stuffed">Stuffed Crust - Cheese-filled edges (+$4)</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-lg font-semibold text-accent mb-3">🧀 Premium Add-ons</label>
-                            <div class="grid grid-cols-2 gap-3">
-                                <label class="flex items-center p-3 border-2 border-gray-200 rounded-xl hover:border-primary transition-colors cursor-pointer group">
-                                    <input type="checkbox" value="cheese" class="topping-checkbox mr-3 w-5 h-5 text-primary">
-                                    <span class="text-sm font-medium group-hover:text-primary">Extra Cheese +$2</span>
-                                </label>
-                                <label class="flex items-center p-3 border-2 border-gray-200 rounded-xl hover:border-primary transition-colors cursor-pointer group">
-                                    <input type="checkbox" value="pepperoni" class="topping-checkbox mr-3 w-5 h-5 text-primary">
-                                    <span class="text-sm font-medium group-hover:text-primary">Pepperoni +$2</span>
-                                </label>
-                                <label class="flex items-center p-3 border-2 border-gray-200 rounded-xl hover:border-primary transition-colors cursor-pointer group">
-                                    <input type="checkbox" value="mushrooms" class="topping-checkbox mr-3 w-5 h-5 text-primary">
-                                    <span class="text-sm font-medium group-hover:text-primary">Mushrooms +$1</span>
-                                </label>
-                                <label class="flex items-center p-3 border-2 border-gray-200 rounded-xl hover:border-primary transition-colors cursor-pointer group">
-                                    <input type="checkbox" value="olives" class="topping-checkbox mr-3 w-5 h-5 text-primary">
-                                    <span class="text-sm font-medium group-hover:text-primary">Olives +$1</span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-lg font-semibold text-accent mb-3">📦 Quantity</label>
-                            <div class="flex items-center justify-center space-x-6 p-4 bg-gray-50 rounded-xl">
-                                <button onclick="changeQuantity(-1)" class="w-12 h-12 bg-primary text-white rounded-full hover:bg-red-700 transition-colors font-bold text-xl">-</button>
-                                <span id="quantity" class="text-3xl font-bold text-accent min-w-[3rem] text-center">1</span>
-                                <button onclick="changeQuantity(1)" class="w-12 h-12 bg-primary text-white rounded-full hover:bg-red-700 transition-colors font-bold text-xl">+</button>
-                            </div>
-                        </div>
-                        
-                        <div class="flex space-x-4 pt-4">
-                            <button onclick="addToCart()" class="flex-1 bg-gradient-to-r from-primary to-terracotta text-white py-4 rounded-xl font-bold text-lg hover:from-terracotta hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                🛒 Add to Cart - $<span id="totalPrice">21.99</span>
-                            </button>
-                            <button onclick="closeModal()" class="px-8 py-4 border-2 border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-300 font-semibold">
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cart Modal -->
-    <div id="cartModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[95vh] overflow-y-auto decorative-border">
-            <div class="p-8">
-                <div class="flex justify-between items-center mb-8">
-                    <div>
-                        <h3 class="text-3xl font-serif font-bold text-accent mb-2">Your Delicious Order</h3>
-                        <p class="text-gray-600">Review and checkout</p>
-                    </div>
-                    <button onclick="closeCartModal()" class="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-700 text-2xl transition-all duration-300">&times;</button>
-                </div>
-                
-                <div id="cartItems" class="mb-8 space-y-4">
-                    <!-- Cart items will be populated by JavaScript -->
-                </div>
-                
-                <div class="border-t-2 border-gray-100 pt-6">
-                    <div class="flex justify-between items-center mb-6 p-4 bg-gradient-to-r from-gold/10 to-secondary/10 rounded-xl">
-                        <span class="text-2xl font-serif font-bold text-accent">Total:</span>
-                        <span class="price-tag">$<span id="cartTotal">0.00</span></span>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label class="block text-lg font-semibold text-accent mb-3">🏠 Delivery Address</label>
-                        <input type="text" id="deliveryAddress" placeholder="Enter your complete address for delivery" class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors text-lg">
-                        <p class="text-sm text-gray-500 mt-2">Free delivery within 5 miles • $3 delivery fee beyond</p>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button onclick="checkout()" class="bg-gradient-to-r from-sage to-green-500 text-white py-4 rounded-xl font-bold text-lg hover:from-green-500 hover:to-sage transition-all duration-300 transform hover:scale-105 shadow-lg">
-                            🚚 Complete Order
-                        </button>
-                        <button onclick="closeCartModal()" class="border-2 border-gray-300 text-accent py-4 rounded-xl hover:bg-gray-50 transition-all duration-300 font-semibold text-lg">
-                            Continue Shopping
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script>
-        // Pizza data with enhanced descriptions
-        const pizzas = [
-            {
-                id: 1,
-                name: "Margherita Classica",
-                price: 16.99,
-                image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500&h=400&fit=crop",
-                description: "San Marzano tomatoes, fresh buffalo mozzarella, organic basil, and first-press olive oil on our signature sourdough crust.",
-                specialty: "Traditional Recipe",
-                ingredients: ["San Marzano Tomatoes", "Buffalo Mozzarella", "Fresh Basil", "Extra Virgin Olive Oil"]
-            },
-            {
-                id: 2,
-                name: "Pepperoni Supremo",
-                price: 18.99,
-                image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&h=400&fit=crop",
-                description: "Premium calabrese pepperoni, aged mozzarella, and our secret herb-infused tomato sauce.",
-                specialty: "Chef's Favorite",
-                ingredients: ["Calabrese Pepperoni", "Aged Mozzarella", "Herb Tomato Sauce", "Italian Herbs"]
-            },
-            {
-                id: 3,
-                name: "Quattro Stagioni",
-                price: 21.99,
-                image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&h=400&fit=crop",
-                description: "Artichokes, porcini mushrooms, prosciutto di Parma, and Kalamata olives representing the four seasons.",
-                specialty: "Artisan Special",
-                ingredients: ["Artichokes", "Porcini Mushrooms", "Prosciutto di Parma", "Kalamata Olives"]
-            },
-            {
-                id: 4,
-                name: "Carnivore's Dream",
-                price: 23.99,
-                image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
-                description: "Pepperoni, Italian sausage, crispy pancetta, and smoky ham for the ultimate meat lovers experience.",
-                specialty: "Protein Packed",
-                ingredients: ["Pepperoni", "Italian Sausage", "Pancetta", "Smoky Ham"]
-            },
-            {
-                id: 5,
-                name: "Garden Harvest",
-                price: 19.99,
-                image: "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=500&h=400&fit=crop",
-                description: "Roasted bell peppers, caramelized onions, vine tomatoes, and fresh herbs from our garden.",
-                specialty: "Farm Fresh",
-                ingredients: ["Roasted Peppers", "Caramelized Onions", "Vine Tomatoes", "Fresh Herbs"]
-            },
-            {
-                id: 6,
-                name: "BBQ Pollo Rustico",
-                price: 20.99,
-                image: "https://images.unsplash.com/photo-1598023696416-0193a0bcd302?w=500&h=400&fit=crop",
-                description: "Wood-fired chicken, caramelized red onions, fresh cilantro, and our signature bourbon BBQ sauce.",
-                specialty: "Wood-Fired",
-                ingredients: ["Wood-Fired Chicken", "Red Onions", "Fresh Cilantro", "Bourbon BBQ Sauce"]
-            }
-        ];
-
-        // Enhanced cart functionality
-        let cart = [];
-        let currentPizza = null;
-
-        // Initialize the page with animations
-        document.addEventListener('DOMContentLoaded', function() {
-            renderPizzas();
-            updateCartCount();
-            
-            // Add scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+        // Export to PDF functionality
+        function exportToPDF() {
+            const element = document.body;
+            const opt = {
+                margin: 0.5,
+                filename: 'DMD_Exon44_Competitive_Intelligence.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-up');
-                    }
-                });
-            }, observerOptions);
-            
-            document.querySelectorAll('.pizza-card').forEach(card => {
-                observer.observe(card);
-            });
-        });
-
-        function renderPizzas() {
-            const grid = document.getElementById('pizzaGrid');
-            grid.innerHTML = pizzas.map((pizza, index) => `
-                <div class="pizza-card rounded-3xl shadow-xl overflow-hidden group" style="animation-delay: ${index * 0.1}s">
-                    <div class="relative">
-                        <img src="${pizza.image}" alt="${pizza.name}" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-gradient-to-r from-primary to-secondary text-white px-3 py-1 rounded-full text-xs font-bold">
-                                ${pizza.specialty}
-                            </span>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <div class="price-tag text-base">${pizza.price}</div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-serif font-bold text-accent mb-3 group-hover:text-primary transition-colors">${pizza.name}</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed">${pizza.description}</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            ${pizza.ingredients.slice(0, 2).map(ingredient => 
-                                `<span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">${ingredient}</span>`
-                            ).join('')}
-                            <span class="text-xs bg-gold/20 text-accent px-2 py-1 rounded-full font-semibold">+${pizza.ingredients.length - 2} more</span>
-                        </div>
-                        <button onclick="openPizzaModal(${pizza.id})" class="w-full bg-gradient-to-r from-primary to-terracotta text-white py-3 rounded-xl font-bold hover:from-terracotta hover:to-primary transition-all duration-300 transform hover:scale-105 shadow-lg group-hover:shadow-xl">
-                            🍕 Customize & Order
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+            html2pdf().set(opt).from(element).save();
         }
-
-        function openPizzaModal(pizzaId) {
-            currentPizza = pizzas.find(p => p.id === pizzaId);
-            document.getElementById('modalTitle').textContent = currentPizza.name;
-            document.getElementById('modalImage').src = currentPizza.image;
-            document.getElementById('modalPrice').textContent = `${currentPizza.price}`;
-            document.getElementById('modalDescription').textContent = currentPizza.description;
-            document.getElementById('pizzaModal').classList.remove('hidden');
-            document.getElementById('pizzaModal').classList.add('flex');
-            updateTotalPrice();
-        }
-
-        function closeModal() {
-            document.getElementById('pizzaModal').classList.add('hidden');
-            document.getElementById('pizzaModal').classList.remove('flex');
-            resetModal();
-        }
-
-        function resetModal() {
-            document.getElementById('pizzaSize').value = 'medium';
-            document.getElementById('pizzaCrust').value = 'thin';
-            document.getElementById('quantity').textContent = '1';
-            document.querySelectorAll('.topping-checkbox').forEach(cb => cb.checked = false);
-            updateTotalPrice();
-        }
-
-        function updateTotalPrice() {
-            if (!currentPizza) return;
-            
-            let total = currentPizza.price;
-            
-            // Size pricing
-            const size = document.getElementById('pizzaSize').value;
-            if (size === 'medium') total += 3;
-            if (size === 'large') total += 6;
-            
-            // Crust pricing
-            const crust = document.getElementById('pizzaCrust').value;
-            if (crust === 'thick') total += 2;
-            if (crust === 'stuffed') total += 4;
-            
-            // Toppings pricing
-            document.querySelectorAll('.topping-checkbox:checked').forEach(cb => {
-                if (cb.value === 'cheese' || cb.value === 'pepperoni') total += 2;
-                else total += 1;
-            });
-            
-            const quantity = parseInt(document.getElementById('quantity').textContent);
-            total *= quantity;
-            
-            document.getElementById('totalPrice').textContent = total.toFixed(2);
-        }
-
-        function changeQuantity(change) {
-            const quantityEl = document.getElementById('quantity');
-            let quantity = parseInt(quantityEl.textContent) + change;
-            if (quantity < 1) quantity = 1;
-            if (quantity > 10) quantity = 10;
-            quantityEl.textContent = quantity;
-            updateTotalPrice();
-        }
-
-        function addToCart() {
-            if (!currentPizza) return;
-            
-            const size = document.getElementById('pizzaSize').value;
-            const crust = document.getElementById('pizzaCrust').value;
-            const toppings = Array.from(document.querySelectorAll('.topping-checkbox:checked')).map(cb => cb.value);
-            const quantity = parseInt(document.getElementById('quantity').textContent);
-            const totalPrice = parseFloat(document.getElementById('totalPrice').textContent);
-            
-            const cartItem = {
-                id: Date.now(),
-                pizza: currentPizza,
-                size,
-                crust,
-                toppings,
-                quantity,
-                totalPrice
-            };
-            
-            cart.push(cartItem);
-            updateCartCount();
-            closeModal();
-            
-            // Enhanced success feedback
-            showNotification('🍕 Pizza added to cart!', 'success');
-        }
-
-        function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').textContent = count;
-        }
-
-        function openCartModal() {
-            renderCartItems();
-            document.getElementById('cartModal').classList.remove('hidden');
-            document.getElementById('cartModal').classList.add('flex');
-        }
-
-        function closeCartModal() {
-            document.getElementById('cartModal').classList.add('hidden');
-            document.getElementById('cartModal').classList.remove('flex');
-        }
-
-        function renderCartItems() {
-            const cartItemsEl = document.getElementById('cartItems');
-            
-            if (cart.length === 0) {
-                cartItemsEl.innerHTML = `
-                    <div class="text-center py-12">
-                        <div class="text-6xl mb-4">🍕</div>
-                        <p class="text-xl text-gray-500 mb-2">Your cart is empty</p>
-                        <p class="text-gray-400">Add some delicious pizzas to get started!</p>
-                    </div>
-                `;
-                document.getElementById('cartTotal').textContent = '0.00';
-                return;
-            }
-            
-            cartItemsEl.innerHTML = cart.map(item => `
-                <div class="flex items-center justify-between p-6 bg-gradient-to-r from-warm to-white rounded-2xl border border-gray-100 hover:border-primary/30 transition-all duration-300">
-                    <div class="flex items-center space-x-4">
-                        <img src="${item.pizza.image}" alt="${item.pizza.name}" class="w-20 h-20 object-cover rounded-xl">
-                        <div>
-                            <h4 class="text-xl font-serif font-bold text-accent">${item.pizza.name}</h4>
-                            <p class="text-sm text-gray-600 capitalize">${item.size} • ${item.crust} crust</p>
-                            ${item.toppings.length > 0 ? `<p class="text-sm text-gray-600">+ ${item.toppings.join(', ')}</p>` : ''}
-                            <div class="flex items-center mt-2">
-                                <span class="ingredient-badge text-xs">Qty: ${item.quantity}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-2xl font-bold text-primary mb-2">${item.totalPrice.toFixed(2)}</p>
-                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 font-medium transition-colors">
-                            🗑️ Remove
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-            
-            const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
-            document.getElementById('cartTotal').textContent = total.toFixed(2);
-        }
-
-        function removeFromCart(itemId) {
-            cart = cart.filter(item => item.id !== itemId);
-            updateCartCount();
-            renderCartItems();
-            showNotification('Item removed from cart', 'info');
-        }
-
-        function checkout() {
-            const address = document.getElementById('deliveryAddress').value;
-            
-            if (!address.trim()) {
-                showNotification('Please enter a delivery address', 'error');
-                return;
-            }
-            
-            if (cart.length === 0) {
-                showNotification('Your cart is empty', 'error');
-                return;
-            }
-            
-            const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
-            showNotification('🎉 Order placed successfully! Your delicious pizzas will be delivered to ' + address + ' in 25-30 minutes. Thank you for choosing Slice & Dice!', 'success');
-            
-            cart = [];
-            updateCartCount();
-            closeCartModal();
-            document.getElementById('deliveryAddress').value = '';
-        }
-
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-20 right-4 z-[60] p-4 rounded-xl text-white font-semibold max-w-md transform translate-x-full transition-transform duration-300 ${
-                type === 'success' ? 'bg-gradient-to-r from-sage to-green-500' :
-                type === 'error' ? 'bg-gradient-to-r from-red-500 to-red-600' :
-                'bg-gradient-to-r from-blue-500 to-blue-600'
-            }`;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => document.body.removeChild(notification), 300);
-            }, 4000);
-        }
-
-        function scrollToMenu() {
-            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Event listeners
-        document.getElementById('cartBtn').addEventListener('click', openCartModal);
-        document.getElementById('pizzaSize').addEventListener('change', updateTotalPrice);
-        document.getElementById('pizzaCrust').addEventListener('change', updateTotalPrice);
-        document.querySelectorAll('.topping-checkbox').forEach(cb => {
-            cb.addEventListener('change', updateTotalPrice);
-        });
-
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-            
-            const heroElements = document.querySelectorAll('.animate-float');
-            heroElements.forEach(element => {
-                element.style.transform = `translateY(${parallax}px)`;
-            });
-        });
     </script>
 </body>
 </html>

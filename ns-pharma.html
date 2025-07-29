@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NS Pharma - Brogidirsen (NS-089) | DMD Exon 44 Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-button.active { 
+            border-bottom-color: rgb(99 102 241); 
+            color: rgb(99 102 241);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">NS Pharma / Nippon Shinyaku</h1>
+                    <p class="text-lg text-gray-600 mt-1">Brogidirsen (NS-089) - Primary Competitive Threat</p>
+                </div>
+                <button onclick="window.close()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    Close
+                </button>
+            </div>
+            
+            <!-- Threat Assessment -->
+            <div class="bg-gradient-to-r from-red-50 to-red-100 rounded-xl p-6 mt-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-red-900">Threat Level: Very High (#1)</h3>
+                        <p class="text-red-700 mt-1">Phase 2 ongoing with FDA Breakthrough Therapy Designation</p>
+                    </div>
+                    <div class="text-4xl">🔥</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8">
+                <button onclick="showTab('overview')" class="tab-button active py-4 px-1 border-b-2 font-medium text-sm">
+                    Overview
+                </button>
+                <button onclick="showTab('clinical')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Clinical Data
+                </button>
+                <button onclick="showTab('regulatory')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Regulatory Status
+                </button>
+                <button onclick="showTab('patents')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Patents
+                </button>
+                <button onclick="showTab('financial')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Financial Data
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Strategic Threat Assessment</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-3">Why They're #1 Threat</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>Phase 2 ongoing, ahead of Avidity's AOC-1044</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>FDA Breakthrough Therapy Designation (2024)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>FDA Orphan Drug Designation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>FDA Rare Pediatric Disease Designation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>Self-owned PMO platform - no IP risk to Avidity</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-3">Strategic Impact</h3>
+                        <p class="text-sm text-gray-600 mb-3">
+                            First to market with potentially approvable therapy in same patient group (6-8%), 
+                            which could capture doctors, payors, and patients before Avidity.
+                        </p>
+                        <div class="bg-yellow-50 rounded-lg p-4">
+                            <p class="text-sm text-yellow-900">
+                                <strong>Key Risk:</strong> NS-089's 10-16% dystrophin expression, while lower than 
+                                AOC-1044's 25-58%, may be sufficient for accelerated approval based on FDA precedent.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h3 class="font-semibold mb-3">Key Competitive Metrics</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-purple-600">Phase 2</p>
+                        <p class="text-xs text-gray-600">Current Stage</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-red-600">10-16%</p>
+                        <p class="text-xs text-gray-600">Dystrophin Expression</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-orange-600">Weekly</p>
+                        <p class="text-xs text-gray-600">Dosing Frequency</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-green-600">2026</p>
+                        <p class="text-xs text-gray-600">Expected Completion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clinical Data Tab -->
+        <div id="clinical" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Phase 1/2 Results</h2>
+                
+                <div class="bg-blue-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-blue-900 mb-3">Published Clinical Data</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-sm text-gray-600">Dystrophin Expression Range</p>
+                            <p class="text-3xl font-bold text-blue-900">10.27-15.79%</p>
+                            <p class="text-sm text-gray-500 mt-1">of normal</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Treatment Duration</p>
+                            <p class="text-3xl font-bold text-blue-900">24 weeks</p>
+                            <p class="text-sm text-gray-500 mt-1">6 patients</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-semibold mb-3">Current Studies</h3>
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-900">Phase 2 Study (United States)</h4>
+                        <div class="mt-2 text-sm text-gray-600">
+                            <p>Status: Enrolling</p>
+                            <p>Expected Completion: 2026</p>
+                        </div>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-900">Phase 2 Study (Japan)</h4>
+                        <div class="mt-2 text-sm text-gray-600">
+                            <p>Status: Active</p>
+                            <p>Enrollment: Ongoing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="font-semibold mb-3">Efficacy Comparison</h3>
+                    <canvas id="efficacyChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Regulatory Tab -->
+        <div id="regulatory" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Regulatory Designations</h2>
+                
+                <div class="space-y-4">
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <h3 class="font-semibold text-green-900 mb-4">FDA Designations Received</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0 mt-0.5">✓</div>
+                                <div class="ml-3">
+                                    <p class="font-medium">Breakthrough Therapy Designation</p>
+                                    <p class="text-sm text-gray-600">Granted 2024 - Enables expedited review</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0 mt-0.5">✓</div>
+                                <div class="ml-3">
+                                    <p class="font-medium">Orphan Drug Designation</p>
+                                    <p class="text-sm text-gray-600">7-year market exclusivity upon approval</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm flex-shrink-0 mt-0.5">✓</div>
+                                <div class="ml-3">
+                                    <p class="font-medium">Rare Pediatric Disease Designation</p>
+                                    <p class="text-sm text-gray-600">Priority Review Voucher eligibility</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 rounded-lg p-6">
+                        <h3 class="font-semibold text-blue-900 mb-3">Regulatory Timeline</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-blue-600 rounded-full"></div>
+                                <div class="ml-4">
+                                    <p class="font-medium">2024</p>
+                                    <p class="text-sm text-gray-600">Breakthrough Therapy Designation granted</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-blue-600 rounded-full"></div>
+                                <div class="ml-4">
+                                    <p class="font-medium">2025</p>
+                                    <p class="text-sm text-gray-600">Phase 2 enrollment ongoing</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-gray-400 rounded-full"></div>
+                                <div class="ml-4">
+                                    <p class="font-medium">2026</p>
+                                    <p class="text-sm text-gray-600">Phase 2 expected completion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patents Tab -->
+        <div id="patents" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Patent Portfolio Analysis</h2>
+                
+                <div class="mb-6">
+                    <h3 class="font-semibold text-red-900 mb-3">High Proximity Patents (Score: 80-100)</h3>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-medium text-red-900">US12060556B2</h4>
+                                    <p class="text-sm text-gray-600 mt-1">PMOs for exon 44 skipping in DMD. Specific sequences (SEQ ID NO: 55, 106)</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Score: 95</span>
+                            </div>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-medium text-red-900">US11193125B2</h4>
+                                    <p class="text-sm text-gray-600 mt-1">PMOs constructed from two unit oligos for exon 44 skipping</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Score: 90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-orange-900 mb-3">Medium Proximity Patents (Score: 30-60)</h3>
+                    <div class="space-y-3">
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                            <h4 class="font-medium text-orange-900">US9840706B2, US9988629B2, US10870676B2, US10851373B2</h4>
+                            <p class="text-sm text-gray-600 mt-1">Additional PMO chemistries and methods for various DMD mutations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Tab -->
+        <div id="financial" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Financial Analysis - Nippon Shinyaku</h2>
+                
+                <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold mb-4">R&D Investment (Fiscal Year ending March)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b">
+                                    <th class="text-left py-2">FY</th>
+                                    <th class="text-right py-2">Total R&D (¥M)</th>
+                                    <th class="text-right py-2">% of Net Sales</th>
+                                    <th class="text-right py-2">Est. DMD Spend</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="py-2">FY2021</td>
+                                    <td class="text-right">16,104</td>
+                                    <td class="text-right">11.6%</td>
+                                    <td class="text-right">—</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="py-2">FY2022</td>
+                                    <td class="text-right">26,386</td>
+                                    <td class="text-right">16.7%</td>
+                                    <td class="text-right">—</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="py-2">FY2023</td>
+                                    <td class="text-right">24,135</td>
+                                    <td class="text-right">13.2%</td>
+                                    <td class="text-right">—</td>
+                                </tr>
+                                <tr class="border-b bg-yellow-50">
+                                    <td class="py-2 font-semibold">FY2024</td>
+                                    <td class="text-right font-semibold">31,676</td>
+                                    <td class="text-right font-semibold">21.4%</td>
+                                    <td class="text-right font-semibold">¥9,500-11,100M</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-blue-900 mb-2">DMD R&D Focus</h4>
+                        <p class="text-2xl font-bold">30-35%</p>
+                        <p class="text-sm text-gray-600">of total R&D budget</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4">
+                        <h4 class="font-semibold text-green-900 mb-2">USD Equivalent</h4>
+                        <p class="text-2xl font-bold">~$211M</p>
+                        <p class="text-sm text-gray-600">Total R&D (FY2024)</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-4 bg-gray-100 rounded-lg">
+                    <p class="text-sm text-gray-700">
+                        <strong>Financial Strength:</strong> Nippon Shinyaku's substantial commitment to DMD research, 
+                        with 30-35% of R&D budget allocated to nucleic acid therapeutics, demonstrates strategic focus 
+                        on this market.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-4 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-xs text-gray-600 text-center">
+                Last updated: July 28, 2025 | Data sources: Clinical trial publications, FDA database, Nippon Shinyaku annual reports
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active', 'text-indigo-600', 'border-indigo-500');
+                button.classList.add('text-gray-500', 'border-transparent');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Set active button
+            event.target.classList.remove('text-gray-500', 'border-transparent');
+            event.target.classList.add('active', 'text-indigo-600', 'border-indigo-500');
+        }
+
+        // Create efficacy comparison chart
+        window.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('efficacyChart');
+            if (ctx) {
+                new Chart(ctx.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['NS-089 (Min)', 'NS-089 (Max)', 'AOC-1044 (Min)', 'AOC-1044 (Max)'],
+                        datasets: [{
+                            label: 'Dystrophin Expression (%)',
+                            data: [10.27, 15.79, 25, 58],
+                            backgroundColor: [
+                                'rgba(239, 68, 68, 0.8)',
+                                'rgba(239, 68, 68, 0.8)',
+                                'rgba(34, 197, 94, 0.8)',
+                                'rgba(34, 197, 94, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgb(239, 68, 68)',
+                                'rgb(239, 68, 68)',
+                                'rgb(34, 197, 94)',
+                                'rgb(34, 197, 94)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 60,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.parsed.y + '% of normal';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

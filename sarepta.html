@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarepta Therapeutics - Patent Portfolio | DMD Exon 44 Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-button.active { 
+            border-bottom-color: rgb(99 102 241); 
+            color: rgb(99 102 241);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Sarepta Therapeutics</h1>
+                    <p class="text-lg text-gray-600 mt-1">Patent Portfolio - IP Risk Assessment</p>
+                </div>
+                <button onclick="window.close()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    Close
+                </button>
+            </div>
+            
+            <!-- Threat Assessment -->
+            <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-xl p-6 mt-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-yellow-900">Threat Level: Moderate (#3) - IP Risk</h3>
+                        <p class="text-yellow-700 mt-1">No clinical program but significant patent holdings</p>
+                    </div>
+                    <div class="text-4xl">⚠️</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8">
+                <button onclick="showTab('overview')" class="tab-button active py-4 px-1 border-b-2 font-medium text-sm">
+                    Overview
+                </button>
+                <button onclick="showTab('patents')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Patent Portfolio
+                </button>
+                <button onclick="showTab('financial')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Financial Data
+                </button>
+                <button onclick="showTab('safety')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Safety Issues
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Strategic IP Threat Assessment</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-3">Why They Matter</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">✓</span>
+                                <span>Holds granted patents covering exon 44 antisense sequences</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">✓</span>
+                                <span>Could assert IP against Avidity if AOC-1044 uses overlapping sequences</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">✓</span>
+                                <span>Potential licensing requirements or litigation risk</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">✓</span>
+                                <span>2 high-proximity patents (score 80-100)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-3">Current Situation</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">❌</span>
+                                <span>No clinical program for exon 44</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">❌</span>
+                                <span>36% workforce reduction (500 layoffs)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">❌</span>
+                                <span>Elevidys safety issues (multiple patient deaths)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">❌</span>
+                                <span>FDA shipment halt, EMA rejection</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-blue-50 rounded-lg p-4">
+                    <p class="text-sm text-blue-900">
+                        <strong>Strategic Impact:</strong> Not a drug rival, but a legal/IP obstacle that could 
+                        delay or encumber launch via licensing or litigation. Financial constraints may affect 
+                        IP enforcement approach.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h3 class="font-semibold mb-3">Key Risk Metrics</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-yellow-600">2</p>
+                        <p class="text-xs text-gray-600">High Proximity Patents</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-gray-600">No</p>
+                        <p class="text-xs text-gray-600">Clinical Program</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-red-600">36%</p>
+                        <p class="text-xs text-gray-600">Workforce Reduction</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-green-600">$638.2M</p>
+                        <p class="text-xs text-gray-600">2024 Revenue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patents Tab -->
+        <div id="patents" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Exon 44 Patent Portfolio</h2>
+                
+                <div class="mb-6">
+                    <h3 class="font-semibold text-red-900 mb-3">High Proximity Patents (Score: 80-100)</h3>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-medium text-red-900">US10907154B2</h4>
+                                    <p class="text-sm text-gray-600 mt-1">PMO (SEQ ID NO: 6) for exon 44 skipping in DMD</p>
+                                    <p class="text-sm text-gray-600">Covers PEGylation and IV delivery</p>
+                                    <p class="text-xs text-gray-500 mt-2">Expiry: ~2037</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Score: 95</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-medium text-red-900">US9217148B2</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Claims 28-base PMO for exon 44 skipping</p>
+                                    <p class="text-sm text-gray-600">Includes delivery-enhancing conjugates</p>
+                                    <p class="text-xs text-gray-500 mt-2">Expiry: ~2033</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Score: 90</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="font-semibold text-orange-900 mb-3">Medium Proximity Patents (Score: 30-60)</h3>
+                    <div class="space-y-3">
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                            <h4 class="font-medium text-orange-900">US9469664B2, US10202602B2</h4>
+                            <p class="text-sm text-gray-600 mt-1">Oligonucleotide analogues targeting DMD</p>
+                        </div>
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                            <h4 class="font-medium text-orange-900">US10888578B2</h4>
+                            <p class="text-sm text-gray-600 mt-1">Exon skipping oligomer conjugates for muscular dystrophy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 rounded-lg p-6">
+                    <h3 class="font-semibold text-yellow-900 mb-3">IP Risk Mitigation Strategies</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Design around existing claims with novel sequences</li>
+                        <li>• Pursue licensing agreement proactively</li>
+                        <li>• Challenge patent validity if necessary</li>
+                        <li>• Leverage Sarepta's current financial constraints</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Tab -->
+        <div id="financial" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Financial Performance & Restructuring</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <h3 class="font-semibold text-green-900 mb-3">2024 Financial Results</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-sm">Net Product Revenue:</span>
+                                <span class="font-semibold">$638.2M (+75% YoY)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">GAAP Profit:</span>
+                                <span class="font-semibold">$159M</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Non-GAAP Profit:</span>
+                                <span class="font-semibold">$206M</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-red-50 rounded-lg p-6">
+                        <h3 class="font-semibold text-red-900 mb-3">Cost-Cutting Measures</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-sm">Workforce Reduction:</span>
+                                <span class="font-semibold">~36% (500 layoffs)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Annual Savings Target:</span>
+                                <span class="font-semibold">$400M</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Cash Position:</span>
+                                <span class="font-semibold">~$850M</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-semibold mb-3">Quarterly Revenue Trend</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="text-left py-2">Period</th>
+                                <th class="text-right py-2">Net Product Revenue</th>
+                                <th class="text-right py-2">YoY Growth</th>
+                                <th class="text-left py-2">Key Development</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-2">Q2 2024</td>
+                                <td class="text-right">$360.5M</td>
+                                <td class="text-right text-green-600">+51%</td>
+                                <td>ELEVIDYS launch ramp</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2">Q3 2024</td>
+                                <td class="text-right">$429.8M</td>
+                                <td class="text-right text-green-600">+39%</td>
+                                <td>Strong DMD portfolio sales</td>
+                            </tr>
+                            <tr class="border-b bg-yellow-50">
+                                <td class="py-2 font-semibold">Q4/FY 2024</td>
+                                <td class="text-right font-semibold">$638.2M</td>
+                                <td class="text-right font-semibold text-green-600">+75%</td>
+                                <td>$600M credit facility launched</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2">Mid-2025</td>
+                                <td class="text-right">$282M (Q2 Elevidys)</td>
+                                <td class="text-right text-red-600">Missed expectations</td>
+                                <td>Safety concerns emerge</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6 bg-gray-100 rounded-lg p-4">
+                    <p class="text-sm text-gray-700">
+                        <strong>Financial Impact:</strong> Despite strong 2024 revenue growth, 2025 challenges including 
+                        safety issues and workforce reduction indicate financial pressure that may affect IP enforcement strategy.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Safety Tab -->
+        <div id="safety" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Elevidys Safety Crisis</h2>
+                
+                <div class="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-red-900 mb-3">⚠️ Critical Safety Issues</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-medium">Multiple Patient Deaths</p>
+                            <p class="text-sm text-gray-600 mt-1">FDA ordered halt to Elevidys shipments due to acute liver failure deaths</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">European Rejection</p>
+                            <p class="text-sm text-gray-600 mt-1">EMA denied approval citing insufficient efficacy and safety concerns</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Regulatory Trust Damaged</p>
+                            <p class="text-sm text-gray-600 mt-1">Initial resistance to FDA pause harmed regulatory relationships</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Suspended Gene Therapy Expansion</p>
+                            <p class="text-sm text-gray-600 mt-1">Other gene therapy programs halted due to safety concerns</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-yellow-900 mb-3">Commercial Impact</h3>
+                    <div class="space-y-2">
+                        <p class="text-sm">• ~$820M Elevidys revenue in first full year</p>
+                        <p class="text-sm">• Mid-2025: FDA ordered shipment halt</p>
+                        <p class="text-sm">• Q2 Elevidys revenue: ~$282M (missed expectations)</p>
+                        <p class="text-sm">• 2027 debt obligations pending</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-gray-100 rounded-lg p-4">
+                    <p class="text-sm text-gray-700">
+                        <strong>Strategic Impact:</strong> These safety challenges may impact Sarepta's strategic focus 
+                        and resource allocation, potentially affecting their approach to IP enforcement in the exon 
+                        skipping space.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-4 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-xs text-gray-600 text-center">
+                Last updated: July 28, 2025 | Data sources: Investors.com, Wall Street Journal, Washington Post, BioSpace, SEC filings
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active', 'text-indigo-600', 'border-indigo-500');
+                button.classList.add('text-gray-500', 'border-transparent');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Set active button
+            event.target.classList.remove('text-gray-500', 'border-transparent');
+            event.target.classList.add('active', 'text-indigo-600', 'border-indigo-500');
+        }
+    </script>
+</body>
+</html>

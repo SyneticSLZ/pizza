@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada Therapeutics - ENTR-601-44 | DMD Exon 44 Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-button.active { 
+            border-bottom-color: rgb(99 102 241); 
+            color: rgb(99 102 241);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Entrada Therapeutics</h1>
+                    <p class="text-lg text-gray-600 mt-1">ENTR-601-44 - Secondary Competitive Threat</p>
+                </div>
+                <button onclick="window.close()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    Close
+                </button>
+            </div>
+            
+            <!-- Threat Assessment -->
+            <div class="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl p-6 mt-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-orange-900">Threat Level: High (#2)</h3>
+                        <p class="text-orange-700 mt-1">Phase 1b starting H1 2026 after FDA clinical hold lifted</p>
+                    </div>
+                    <div class="text-4xl">🔥</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8">
+                <button onclick="showTab('overview')" class="tab-button active py-4 px-1 border-b-2 font-medium text-sm">
+                    Overview
+                </button>
+                <button onclick="showTab('clinical')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Clinical Trials
+                </button>
+                <button onclick="showTab('regulatory')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Regulatory Timeline
+                </button>
+                <button onclick="showTab('financial')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Financial Data
+                </button>
+                <button onclick="showTab('safety')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Safety Profile
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Financial Tab (Continuing from previous) -->
+        <div id="financial" class="tab-content active">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Financial Position & R&D Investment</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <p class="text-sm text-gray-600">Cash Position (Dec 2024)</p>
+                        <p class="text-3xl font-bold text-green-800">$420M</p>
+                        <p class="text-sm text-gray-500 mt-1">Runway through 2027</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-6">
+                        <p class="text-sm text-gray-600">2024 R&D Expenses</p>
+                        <p class="text-3xl font-bold text-blue-800">$125.3M</p>
+                        <p class="text-sm text-gray-500 mt-1">Q4: $33.4M</p>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-6">
+                        <p class="text-sm text-gray-600">2024 Collaboration Revenue</p>
+                        <p class="text-3xl font-bold text-purple-800">$210.8M</p>
+                        <p class="text-sm text-gray-500 mt-1">Net Income: $65.6M</p>
+                    </div>
+                </div>
+
+                <h3 class="font-semibold mb-3">Quarterly Financial Performance</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="text-left py-2">Quarter</th>
+                                <th class="text-right py-2">Cash/Liquidity</th>
+                                <th class="text-right py-2">R&D Expense</th>
+                                <th class="text-right py-2">Net Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-2">Q3 2022</td>
+                                <td class="text-right">$215.6M</td>
+                                <td class="text-right">$19.0M</td>
+                                <td class="text-right text-red-600">Loss $25.1M</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2">Q3 2023</td>
+                                <td class="text-right">$353.6M</td>
+                                <td class="text-right">$22.2M</td>
+                                <td class="text-right text-green-600">Income $35.5M</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2">Q3 2024</td>
+                                <td class="text-right">$449.3M</td>
+                                <td class="text-right">$31.3M</td>
+                                <td class="text-right text-red-600">Loss $14.0M</td>
+                            </tr>
+                            <tr class="border-b bg-yellow-50">
+                                <td class="py-2 font-semibold">Full Year 2024</td>
+                                <td class="text-right font-semibold">$420M</td>
+                                <td class="text-right font-semibold">$125.3M</td>
+                                <td class="text-right font-semibold text-green-600">Income $65.6M</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6 bg-gray-50 rounded-lg p-4">
+                    <p class="text-sm text-gray-700">
+                        <strong>Financial Strength:</strong> Despite FDA hold delays, Entrada maintains strong financial position 
+                        with $420M cash and profitable operations in 2024, providing runway through 2027.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Safety Tab -->
+        <div id="safety" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Safety Profile</h2>
+                
+                <div class="bg-green-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-green-900 mb-3">✅ Clean Safety Profile (So Far)</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="font-medium">Phase 1 Single-Dose Study Results</p>
+                            <ul class="mt-2 space-y-1 text-sm text-gray-600">
+                                <li>• 32 healthy male volunteers</li>
+                                <li>• Four dose cohorts up to 6 mg/kg</li>
+                                <li>• <strong>No serious adverse events</strong></li>
+                                <li>• <strong>No drug-related adverse events</strong></li>
+                                <li>• Only 22 mild/moderate AEs (headache, toothache)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                    <h3 class="font-semibold text-yellow-900 mb-3">⚠️ Regulatory Holds & Delays</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="font-medium">FDA Clinical Hold (2022-2025)</p>
+                            <ul class="mt-2 space-y-1 text-sm text-gray-600">
+                                <li>• Hold issued: December 2022</li>
+                                <li>• Reason: Initial safety concerns</li>
+                                <li>• Hold lifted: February 2025</li>
+                                <li>• Impact: 2+ year delay in development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-gray-100 rounded-lg p-4">
+                    <p class="text-sm text-gray-700">
+                        <strong>Summary:</strong> While healthy volunteer data shows clean safety profile, 
+                        FDA's 2+ year clinical hold raises questions about potential safety concerns that 
+                        delayed clinical progression.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overview Tab (same as before) -->
+        <div id="overview" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Strategic Threat Assessment</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-3">Why They're #2 Threat</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>FDA lifted clinical hold (February 2025)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>Phase 2 trials (ELEVATE-44) approved</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>EEV™ platform may rival Avidity's AOC</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>Financially stable, runway through 2027</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>Same mutation group, same timeframe</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-3">Key Weaknesses</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">⚠️</span>
+                                <span>2+ year delay from FDA clinical hold (Dec 2022 - Feb 2025)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">⚠️</span>
+                                <span>No patient efficacy data available yet</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">⚠️</span>
+                                <span>No FDA expedited designations announced</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">⚠️</span>
+                                <span>Potential IP overlap with Sarepta</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h3 class="font-semibold mb-3">Key Competitive Metrics</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-blue-600">Phase 1b</p>
+                        <p class="text-xs text-gray-600">Starting H1 2026</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-gray-400">Unknown</p>
+                        <p class="text-xs text-gray-600">Dystrophin Expression</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-green-600">Q6W</p>
+                        <p class="text-xs text-gray-600">Expected Dosing</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-red-600">2027+</p>
+                        <p class="text-xs text-gray-600">Market Entry</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clinical Trials Tab (same as before) -->
+        <div id="clinical" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Clinical Development Program</h2>
+                
+                <div class="bg-green-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-green-900 mb-3">Phase 1 Healthy Volunteer Study (Completed)</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-600">Study Design</p>
+                            <p class="font-semibold">32 healthy male volunteers</p>
+                            <p class="text-sm text-gray-500">Doses up to 6 mg/kg</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Safety Results</p>
+                            <p class="font-semibold text-green-700">No serious adverse events</p>
+                            <p class="text-sm text-gray-500">No drug-related AEs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-semibold mb-3">Upcoming Clinical Studies</h3>
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-900">ELEVATE-44-102 (Phase 1b MAD)</h4>
+                        <div class="mt-2 grid grid-cols-2 gap-4 text-sm text-gray-600">
+                            <div>
+                                <p><strong>Status:</strong> FDA authorized</p>
+                                <p><strong>Start Date:</strong> H1 2026</p>
+                            </div>
+                            <div>
+                                <p><strong>Design:</strong> 32-patient multiple ascending dose</p>
+                                <p><strong>Duration:</strong> TBD</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-900">ELEVATE-44-201 (Phase 1/2)</h4>
+                        <div class="mt-2 text-sm text-gray-600">
+                            <p><strong>Status:</strong> Planning phase</p>
+                            <p><strong>Objective:</strong> First efficacy data in DMD patients</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-yellow-50 rounded-lg p-4">
+                    <p class="text-sm text-yellow-900">
+                        <strong>Key Limitation:</strong> No patient data available. Only healthy volunteer 
+                        safety data exists, making efficacy comparison impossible at this time.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Regulatory Tab (same as before) -->
+        <div id="regulatory" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Regulatory Timeline & Status</h2>
+                
+                <div class="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-red-900 mb-3">⚠️ FDA Clinical Hold History</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-red-600 rounded-full"></div>
+                            <div class="ml-4">
+                                <p class="font-medium">December 2022</p>
+                                <p class="text-sm text-gray-600">FDA placed clinical hold due to safety concerns</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-yellow-600 rounded-full"></div>
+                            <div class="ml-4">
+                                <p class="font-medium">2023-2024</p>
+                                <p class="text-sm text-gray-600">2+ year delay addressing FDA concerns</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-green-600 rounded-full"></div>
+                            <div class="ml-4">
+                                <p class="font-medium">February 2025</p>
+                                <p class="text-sm text-gray-600">FDA removed clinical hold</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 rounded-lg p-6">
+                    <h3 class="font-semibold text-yellow-900 mb-3">Current Regulatory Status</h3>
+                    <div class="space-y-2">
+                        <p class="text-sm"><strong>FDA Designations:</strong> None announced</p>
+                        <p class="text-sm"><strong>Contrast:</strong> Competitors have Fast Track, Breakthrough, or Orphan designations</p>
+                        <p class="text-sm"><strong>Impact:</strong> Standard review timelines apply</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-4 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-xs text-gray-600 text-center">
+                Last updated: July 28, 2025 | Data sources: CureDuchenne, SEC filings, GlobeNewswire, MarketWatch
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active', 'text-indigo-600', 'border-indigo-500');
+                button.classList.add('text-gray-500', 'border-transparent');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Set active button
+            event.target.classList.remove('text-gray-500', 'border-transparent');
+            event.target.classList.add('active', 'text-indigo-600', 'border-indigo-500');
+        }
+    </script>
+</body>
+</html>

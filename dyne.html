@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dyne Therapeutics - FORCE Platform | DMD Exon 44 Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-button.active { 
+            border-bottom-color: rgb(99 102 241); 
+            color: rgb(99 102 241);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Dyne Therapeutics</h1>
+                    <p class="text-lg text-gray-600 mt-1">FORCE™ Platform - Future Competitive Threat</p>
+                </div>
+                <button onclick="window.close()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                    Close
+                </button>
+            </div>
+            
+            <!-- Threat Assessment -->
+            <div class="bg-gradient-to-r from-green-50 to-green-100 rounded-xl p-6 mt-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-green-900">Threat Level: Low (#4) - Currently</h3>
+                        <p class="text-green-700 mt-1">Preclinical exon 44 program, focus on other targets</p>
+                    </div>
+                    <div class="text-4xl">🟡</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8">
+                <button onclick="showTab('overview')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Overview
+                </button>
+                <button onclick="showTab('clinical')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Clinical Programs
+                </button>
+                <button onclick="showTab('patents')" class="tab-button active py-4 px-1 border-b-2 font-medium text-sm">
+                    Patent Portfolio
+                </button>
+                <button onclick="showTab('financial')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    Financial Data
+                </button>
+                <button onclick="showTab('platform')" class="tab-button py-4 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700">
+                    FORCE Platform
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Patents Tab (Continued) -->
+        <div id="patents" class="tab-content active">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Patent Portfolio Analysis</h2>
+                
+                <div class="mb-6">
+                    <h3 class="font-semibold text-red-900 mb-3">High Proximity Patents (Score: 80-100)</h3>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-medium text-red-900">US12329825B1</h4>
+                                    <p class="text-sm text-gray-600 mt-1">PMO conjugated to anti-TfR antibody targeting exon 44. DAR 1-5.</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Score: 95</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-medium text-red-900">US12325753B2</h4>
+                                    <p class="text-sm text-gray-600 mt-1">PMO-anti-TfR antibody complex for muscular dystrophy</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Score: 90</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-medium text-red-900">US12173079B2</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Complexes with anti-TfR antibody and PMO targeting muscle diseases</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Score: 85</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h4 class="font-medium text-red-900">US12263225B2</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Similar conjugate platform targeting exon 51 of DMD, including valine-citrulline linkers and DARs of 1-3</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-semibold">Score: 85</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-orange-900 mb-3">Medium Proximity Patents (Score: 30-60)</h3>
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                        <p class="text-sm text-gray-600">
+                            9 additional medium proximity patents covering production methods, antibody variants, 
+                            and other DMD-related exons or disease types:
+                        </p>
+                        <p class="text-xs text-gray-500 mt-2">
+                            US12144868B2, US11248056B1, US11795234B2, US11795233B2, US11787869B2, 
+                            US12128109B2, US12239717B2, US11844843B2, US12018087B2
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Tab -->
+        <div id="financial" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Financial Strength & Investment</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-lg p-6">
+                        <p class="text-sm text-gray-600">Cash Position</p>
+                        <p class="text-3xl font-bold text-green-800">$678-779M</p>
+                        <p class="text-sm text-gray-500 mt-1">As of mid-2025</p>
+                    </div>
+                    <div class="bg-blue-50 rounded-lg p-6">
+                        <p class="text-sm text-gray-600">Recent Raises</p>
+                        <p class="text-3xl font-bold text-blue-800">$574M</p>
+                        <p class="text-sm text-gray-500 mt-1">2024-2025</p>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-6">
+                        <p class="text-sm text-gray-600">Runway</p>
+                        <p class="text-3xl font-bold text-purple-800">Mid-2026</p>
+                        <p class="text-sm text-gray-500 mt-1">Operational funding</p>
+                    </div>
+                </div>
+
+                <h3 class="font-semibold mb-3">Capital Raises & Milestones</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="text-left py-2">Period</th>
+                                <th class="text-right py-2">Amount Raised</th>
+                                <th class="text-left py-2">Key Development</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-2">Q2 2024</td>
+                                <td class="text-right font-semibold">$374M</td>
+                                <td>Strong investor confidence post-DYNE-251 data</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2">Mid-2025</td>
+                                <td class="text-right font-semibold">$200M</td>
+                                <td>Minimal dilution, strategic raise</td>
+                            </tr>
+                            <tr class="border-b bg-yellow-50">
+                                <td class="py-2 font-semibold">Total</td>
+                                <td class="text-right font-semibold">$574M</td>
+                                <td>2024-2025 period</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-6 bg-yellow-50 rounded-lg p-6">
+                    <h3 class="font-semibold text-yellow-900 mb-3">Investment Highlights</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Ability to fund multiple programs in parallel</li>
+                        <li>• Strategic flexibility for exon 44 entry if desired</li>
+                        <li>• Strong balance sheet despite executive departures</li>
+                        <li>• Continued investor confidence in FORCE platform</li>
+                    </ul>
+                </div>
+
+                <div class="mt-6 bg-red-50 rounded-lg p-4">
+                    <p class="text-sm text-red-900">
+                        <strong>Note:</strong> September 2024 executive departures (CMO, CCO, CBO) created temporary 
+                        uncertainty but core operations remain strong.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORCE Platform Tab -->
+        <div id="platform" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">FORCE™ Platform Technology</h2>
+                
+                <div class="bg-purple-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-purple-900 mb-3">Platform Capabilities</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mr-2">•</span>
+                            <span>Fab antibody fragment conjugated to oligonucleotides</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mr-2">•</span>
+                            <span>TfR1 targeting for muscle-specific delivery</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mr-2">•</span>
+                            <span>Modular design enables multiple disease targets</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-purple-600 mr-2">•</span>
+                            <span>Demonstrated safety in 54 participants (DELIVER trial)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 rounded-lg p-4">
+                        <h4 class="font-medium text-green-900 mb-2">Platform Advantages</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Proven clinical efficacy (8.72% dystrophin)</li>
+                            <li>• Good safety profile</li>
+                            <li>• Platform scalability across exons</li>
+                            <li>• Established manufacturing</li>
+                        </ul>
+                    </div>
+                    <div class="bg-yellow-50 rounded-lg p-4">
+                        <h4 class="font-medium text-yellow-900 mb-2">vs AOC Platform</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Lower dystrophin levels (8.72% vs 25-58%)</li>
+                            <li>• Less clinical data available</li>
+                            <li>• Significantly behind in exon 44</li>
+                            <li>• No exon 44-specific data</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="font-semibold mb-3">Platform Applications</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <p class="font-semibold">DMD Exon 51</p>
+                            <p class="text-xs text-gray-600">Phase 2/3</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-semibold">DMD Exon 44</p>
+                            <p class="text-xs text-gray-600">Preclinical</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-semibold">DM1</p>
+                            <p class="text-xs text-gray-600">Phase 1/2</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-semibold">FSHD</p>
+                            <p class="text-xs text-gray-600">Multiple programs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overview Tab (Hidden by default) -->
+        <div id="overview" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Strategic Threat Assessment</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-3">Why They're Less of a Threat (Now)</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">❌</span>
+                                <span>No active exon 44 program in clinic</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">❌</span>
+                                <span>Focused on DYNE-251 (exon 51) and FSHD</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">❌</span>
+                                <span>3+ years behind AOC-1044</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">❌</span>
+                                <span>No regulatory designations for exon 44</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">❌</span>
+                                <span>Executive departures in September 2024</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-3">Future Risk Factors</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>Strong platform with 8.72% dystrophin (DYNE-251)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>$670M+ cash position enables aggressive development</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>Multi-exon strategy could leverage learnings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>4 high-proximity patents for exon 44</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span>Could enter later and leapfrog if AOC-1044 delayed</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h3 class="font-semibold mb-3">Key Competitive Metrics</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-green-600">Preclinical</p>
+                        <p class="text-xs text-gray-600">Exon 44 Stage</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-blue-600">8.72%</p>
+                        <p class="text-xs text-gray-600">DYNE-251 Dystrophin</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-purple-600">$678-779M</p>
+                        <p class="text-xs text-gray-600">Cash Position</p>
+                    </div>
+                    <div class="text-center p-4 bg-gray-50 rounded-lg">
+                        <p class="text-2xl font-bold text-red-600">4</p>
+                        <p class="text-xs text-gray-600">High Proximity Patents</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clinical Programs Tab (Hidden by default) -->
+        <div id="clinical" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Clinical Pipeline</h2>
+                
+                <div class="bg-blue-50 rounded-lg p-6 mb-6">
+                    <h3 class="font-semibold text-blue-900 mb-3">DYNE-251 (Exon 51) - Lead Program</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-600">Dystrophin Expression</p>
+                            <p class="text-3xl font-bold text-blue-900">8.72%</p>
+                            <p class="text-sm text-gray-500 mt-1">Exceeds eteplirsen</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Phase</p>
+                            <p class="text-3xl font-bold text-blue-900">Registrational</p>
+                            <p class="text-sm text-gray-500 mt-1">20 mg/kg Q4W</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h4 class="font-medium mb-2">DELIVER Trial Data</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• 54 participants received 970 doses</li>
+                            <li>• ~77 patient-years exposure</li>
+                            <li>• 3 serious AEs at high dose (40 mg/kg)</li>
+                            <li>• No persistent anemia, thrombocytopenia, or kidney issues</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="font-semibold mb-3">Program Status</h3>
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-medium text-gray-900">Exon 44 Program</h4>
+                                <p class="text-sm text-gray-600 mt-1">Status: Preclinical development</p>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Early Stage</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-medium text-gray-900">DM1 Program</h4>
+                                <p class="text-sm text-gray-600 mt-1">ACHIEVE trial ongoing</p>
+                            </div>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Phase 1/2</span>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-medium text-gray-900">FSHD Program</h4>
+                                <p class="text-sm text-gray-600 mt-1">Multiple programs in development</p>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Various Stages</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-4 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-xs text-gray-600 text-center">
+                Last updated: July 28, 2025 | Data sources: Clinical trial registrations, investor presentations, SEC filings, press releases
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active', 'text-indigo-600', 'border-indigo-500');
+                button.classList.add('text-gray-500', 'border-transparent');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Set active button
+            event.target.classList.remove('text-gray-500', 'border-transparent');
+            event.target.classList.add('active', 'text-indigo-600', 'border-indigo-500');
+        }
+    </script>
+</body>
+</html>
